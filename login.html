@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Firstflight Travels</title>
+  <link rel="icon" href="./files/logo.png">
+  <link rel="stylesheet" type="text/css" href="./css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Paytone+One&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+</head>
+
+<body class="register-body">
+  <div class="content" id="home">
+    <nav>
+      <img src="./files/logo.png" class="logo" alt="Logo" title="FirstFlight Travels">
+      <!-- <ul class="navbar">
+                <li>
+                    <a href="#home">Home</a>
+                    <a href="#locations">Locations</a>
+                    <a href="#package">Packages</a>
+                    <a href="./about.html">About Us</a>
+                    <a href="./about.html">Contact Us</a>
+                </li>
+            </ul> -->
+    </nav>
+    <section class="registration">
+      <div class="register-form">
+        <h1>Login <span>Here</span></h1>
+        <form action="" name="register-user" onsubmit="return validateform()">
+          <!-- <input type="text" name="myname1" placeholder="Name" id="name" required> -->
+          <input type="email" name="myemail" placeholder="Email-Id" id="email" required>
+          <input type="password" name="mypass" placeholder="Password" id="pass" required>
+          <br> <br>
+          <input type="submit" value="Login" class="submitbtn">
+          <div class="form-group switch">
+            <span>Don't have an account? <a href="signin.html" onclick="toggleForm()">Sign up</a></span>
+          </div>
+        </form>
+    </section>
+    <section class="footer">
+      <div class="foot">
+        <div class="footer-content">
+          <div class="footlinks">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="./login.html">Login</a></li>
+              <li><a href="./signin.html">Signup</a></li>
+              <!-- <li><a href="./contact.html">Contact Us</a></li> -->
+            </ul>
+          </div>
+          <div class="footlinks">
+            <h4>Connect</h4>
+            <div class="social">
+              <a href=""><i class='bx bxl-facebook'></i></a>
+              <a href="https://www.instagram.com/vivek_.l8" target="_blank"><i class='bx bxl-instagram'></i></a>
+              <a href="https://www.linkedin.com/in/vivekparmar1812" target="_blank"><i class='bx bxl-linkedin'></i></a>
+              <a href=""><i class='bx bxl-youtube'></i></a>
+              <a href="https://github.com/VivekParmar-18"  target="_blank"><i class='bx bxl-github'></i></a>
+              <a href=""><i class='bx bxs-map'></i></a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="end">
+        <p>Copyright © 2022 Firstflight Travels All Rights Reserved.<br>Website developed by: Vivek Parmar</p>
+      </div>
+    </section>
+    <script>
+      const action_url = "https://script.google.com/macros/s/AKfycbx-daf21MSp8fyGcstBnox4cirOxsEQZYuvoNiMEo2d5K75HqNGL39fMwOVp6l_sgU3Kw/exec";
+      const formRegister = document.forms["register-user"];
+
+      // const proxyUrl = 'https://cors-anywhere.herokuapp.com/'
+
+      formRegister.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const formData = new FormData(formRegister)
+        const formDataObject = {};
+        formData.forEach((value, key) => {
+          formDataObject[key] = value;
+        });
+        console.log(new FormData(formRegister));
+
+        const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+
+        if (userInfo.email === formDataObject.myemail && userInfo.password === formDataObject.mypass) {
+          await fetch(action_url, {
+            method: "POST",
+            body: formData,
+          }).then((response) => {
+            console.log(response)
+            alert(" Login Successful!!", response);
+            localStorage.setItem("login", true);
+            formRegister.reset();
+            window.location.href = "./index.html"
+          }).catch((error) => {
+            console.log(error);
+            alert(error.message);
+          })
+        } else {
+          alert("Login with correct email and password");
+        }
+
+      })
+
+    </script>
+  </div>
+</body>
+
+</html>
+<!--                 
+    <h2>Travel Website</h2>
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" required>
+      </div>
+      <div class="form-group">
+        <button type="submit">Login</button>
+      </div>
+      <div class="form-group switch">
+        <span>Don't have an account? <a href="#" onclick="toggleForm()">Sign up</a></span>
+      </div>
+    </form>
+
+    <form id="signupForm" style="display: none;">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" required>
+      </div>
+      <div class="form-group">
+        <button type="submit">Sign up</button>
+      </div>
+      <div class="form-group switch">
+        <span>Already have an account? <a href="#" onclick="toggleForm()">Login</a></span>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function toggleForm() {
+      var loginForm = document.getElementById('loginForm');
+      var signupForm = document.getElementById('signupForm');
+
+      if (loginForm.style.display === 'none') {
+        loginForm.style.display = 'block';
+        signupForm.style.display = 'none';
+      } else {
+        loginForm.style.display = 'none';
+        signupForm.style.display = 'block';
+      }
+    }
+
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      // Get the values from the form
+      var email = document.getElementById('email').value;
+      var password = document.getElementById('password').value;
+
+      // Perform validation (you can replace this with your own logic)
+      if (email === 'user@example.com' && password === 'password') {
+        alert('Login successful!');
+        // Redirect to the home page or perform any other action
+      } else {
+        alert('Invalid email or password. Please try again.');
+      }
+    });
+
+    document.getElementById('signupForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      // Get the values from the form
+      var name = document.getElementById('name').value;
+      var email = document.getElementById('email').value;
+      var password = document.getElementById('password').value;
+
+      // Perform validation and signup logic (you can replace this with your own logic)
+      if (name && email && password) {
+        alert('Signup successful!');
+        // Redirect to the home page or perform any other action
+      } else {
+        alert('Please fill in all the fields.');
+      }
+    });
+  </script> -->
+</body>
+
+</html>
