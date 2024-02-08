@@ -7,6 +7,86 @@
     list-style: none;
     scroll-behavior: smooth;
 }
+/* Phones (up to 767px width) */
+/* For screens smaller than 768px (phones) */
+@media only screen and (max-width: 767px) {
+    .banner {
+        height: auto;
+        padding-top: 50px; /* Adjust spacing for smaller screens */
+        padding-bottom: 50px;
+    }
+
+    .banner video {
+        position: static;
+        width: 100%;
+        height: auto;
+    }
+
+    .title {
+        margin-top: 15vh; /* Adjust vertical alignment */
+    }
+
+    .button {
+        margin-top: 3vh; /* Adjust spacing */
+        font-size: 20px; /* Decrease font size */
+    }
+
+    .navbar {
+        margin-right: 0; /* Remove margin on the right */
+    }
+
+    .navbar .logo {
+        margin-left: 5%; /* Adjust margin */
+    }
+
+    nav ul li {
+        margin-left: 20px; /* Decrease margin */
+    }
+
+    nav ul li a {
+        font-size: 15px; /* Decrease font size */
+    }
+
+    .rowitems {
+        grid-template-columns: repeat(auto-fit, minmax(80px, auto)); /* Adjust grid layout */
+    }
+
+    .container-box {
+        padding: 30px 10px; /* Adjust padding */
+    }
+
+    .container-box h4 {
+        font-size: 18px; /* Decrease font size */
+    }
+
+    .package-title h2 {
+        padding-top: 50px; /* Adjust padding */
+    }
+
+    .image img {
+        height: 300px; /* Decrease image height */
+        border-radius: 15px; /* Decrease border radius */
+    }
+}
+
+/* For screens between 768px and 991px (tablets) */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    /* Add styles specific to tablets here */
+}
+
+/* For screens larger than 991px (laptops and desktops) */
+@media only screen and (min-width: 992px) {
+    /* Add styles specific to laptops and desktops here */
+}
+/* Tablets (768px to 991px width) */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  /* CSS rules for tablets */
+}
+
+/* Laptops (992px and above width) */
+@media only screen and (min-width: 992px) {
+  /* CSS rules for laptops */
+}
 
 /* Home page */
 
@@ -35,9 +115,6 @@
     width: 100%;
     height: 100vh;
     background-image: linear-gradient(rgba(1, 0, 5, 0.3),rgba(4, 1, 17, 0.3));
-
-
-
 }
 
 nav{
